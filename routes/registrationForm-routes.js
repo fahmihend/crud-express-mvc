@@ -4,5 +4,6 @@ const controller = require('../controllers/registrationForm-controller');
 
 router.post('/', controller.postData);
 router.get('/', controller.getData);
+router.delete('/delete/:id', controller.deleteData);
 
 module.exports = router;

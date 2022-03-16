@@ -5,12 +5,7 @@ const controller = {}
 controller.getData = async (req, res) => {
     try {
         const data = await registrationForm.find();
-        console.log(data)
-        //return the data as a json and add count data
-        res.status(200).json({
-            data,
-            count: data.length
-        });
+        res.render('index', {data: data})
     } catch (err) {
         res.json({ message: err });
     }
@@ -19,10 +14,8 @@ controller.getData = async (req, res) => {
 // make a functiont to post a data using try catch
 controller.postData = async (req, res) => {
     try {
-        // const firstName = req.body.firstName;
         const data = await registrationForm.create({
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
+            fullName: req.body.fullName,
             email: req.body.email,
             address: req.body.address,
             phoneNumber: req.body.phoneNumber,
@@ -32,11 +25,23 @@ controller.postData = async (req, res) => {
             lastJobEndDate: req.body.lastJobEndDate,
             lastJobDescription: req.body.lastJobDescription
         });
-        console.log('data', firstName);
         res.status(200).json(data);
     } catch (err) {
         res.send(err);
     }
 }
+
+// make a function to delete a data using try catch
+controller.deleteData = async (req, res) => {
+    try {
+        await registrationForm.findByIdAndDelete(req.params.id);
+        res.redirect('/');
+    } catch (err) {
+        res.send(err);
+    }
+}
+
+
+
 
 module.exports = controller

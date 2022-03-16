@@ -8,6 +8,7 @@ connection();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+
 app.set('view engine', 'ejs');
 
 const registrationRouter = require('./routes/registrationForm-routes');
