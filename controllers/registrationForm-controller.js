@@ -25,7 +25,6 @@ controller.getData = async (req, res) => {
 
 //function to update data using try catch
 controller.updateData = async (req, res) => {
-    console.log('req.body', req.body);
     try {
         const data = await registrationForm.findByIdAndUpdate({_id:req.params.id}, req.body, {
             new: true
