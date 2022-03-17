@@ -19,23 +19,19 @@ const formSchema = new mongoose.Schema({
     },
     lastJobPosition: {
         type: String,
-        required: true
+        // required: true
     },
     lastJobCompany: {
         type: String,
-        required: true
-    },
-    lastJobStartDate: {
-        type: String,
-        required: true
-    },
-    lastJobEndDate: {
-        type: String,
-        required: true
+        // required: true
     },
     lastJobDescription: {
         type: String,
-        required: true
+        // required: true
+    },
+    yearsOfExperiences: {
+        type: String,
+        // required: true
     },
 });
 

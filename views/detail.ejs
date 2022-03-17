@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,64 +9,43 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Applicant Form</title>
 </head>
+
 <body>
     <div class="container">
         <h1>Applicant Form</h1>
-        <form action="/" method="post" class="my-4 form-inline">
+        <form action="/update/<%= data._id %>" method="post" class="my-4 form-inline">
             <div class="form-group">
+                <input hidden required type="string" name="_id" id="_id" placeholder="Full Name"
+                    class="form-control col mr-2 my-2" value="<%= data._id %>">
                 <label>Full Name</label>
                 <input required type="string" name="fullName" id="fullName" placeholder="Full Name"
-                class="form-control col mr-2 my-2">
+                    class="form-control col mr-2 my-2" value="<%= data.fullName %>">
                 <label>Email</label>
-                <input type="email" name="email" id="email" placeholder="Valid Email"
-                class="form-control col mr-2 my-2">
+                <input type="email" name="email" id="email" placeholder="Valid Email" class="form-control col mr-2 my-2"
+                    value="<%= data.email %>">
                 <label>Address</label>
                 <input type="string" name="address" id="address" placeholder="Address"
-                class="form-control col mr-2 my-2">
+                    class="form-control col mr-2 my-2" value="<%= data.address %>">
                 <label>Phone Number</label>
                 <input type="number" name="phoneNumber" id="phoneNumber" placeholder="Phone Number"
-                class="form-control col mr-2 my-2">
+                    class="form-control col mr-2 my-2" value="<%= data.phoneNumber %>">
                 <label>Last Job Position</label>
                 <input type="string" name="lastJobPosition" id="lastJobPosition" placeholder="Last Job Position"
-                class="form-control col mr-2 my-2">
+                    class="form-control col mr-2 my-2" value="<%= data.lastJobPosition %>">
                 <label>Last Job Company</label>
                 <input type="string" name="lastJobCompany" id="lastJobCompany" placeholder="Last Job Company"
-                class="form-control col mr-2 my-2">
+                    class="form-control col mr-2 my-2" value="<%= data.lastJobCompany %>">
                 <label>Last Job Description</label>
                 <input type="string" name="lastJobDescription" id="lastJobDescription" placeholder="Last Job Description"
-                class="form-control col mr-2 my-2">
+                    class="form-control col mr-2 my-2" value="<%= data.lastJobDescription %>">
                 <label>Years Of Experiences</label>
                 <input type="number" name="yearsOfExperiences" id="yearsOfExperiences" placeholder="Years Of Experiences"
-                class="form-control col mr-2 my-2">
+                    class="form-control col mr-2 my-2" value="<%= data.yearsOfExperiences %>">
                 <button type="submit" class="btn btn-success">Save</button>
+                <a data-method="get" href="/" class="btn btn-danger">Back</a>
             </div>
         </form>
-        <table class="table table-striped table-hover table-responsive">
-            <caption>List of urls and clicks</caption>
-            <thead>
-                <tr>
-                    <th>Full Name</th>
-                    <th>Email</th>
-                    <th>address</th>
-                    <th>Phone Number</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% data.forEach(data=> { %>
-                    <tr>
-                        <td><%= data.fullName %></a></td>
-                        <td><%= data.email %></a></td>
-                        <td><%= data.address %></a></td>
-                        <td><%= data.phoneNumber %></a></td>
-                        <td>
-                            <a data-method="delete" href="/delete/<%= data._id %>" class="btn btn-danger">Delete</a>
-                            <a data-method="get" href="/<%= data._id %>" class="btn btn-info">Detail / Edit</a>
-                        </td>
-                    </tr>
-                    <% }) %>
-            </tbody>
-        </table>
     </div>
 </body>
+
 </html>

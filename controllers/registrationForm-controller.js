@@ -1,7 +1,19 @@
 const registrationForm = require('../models/registrationForm-model');
 const controller = {}
 
-//make a function to get all the data from the database using try catch
+//function to get a data by id using try catch
+controller.getDataById = async (req, res) => {
+    try {
+        const data = await registrationForm.findById({
+            _id: req.params.id
+        })
+        res.render('detail', {data: data})
+    } catch (err) {
+        res.json({ message: err });
+    }
+}
+
+//function to get all the data from the database using try catch
 controller.getData = async (req, res) => {
     try {
         const data = await registrationForm.find();
@@ -11,7 +23,20 @@ controller.getData = async (req, res) => {
     }
 }
 
-// make a functiont to post a data using try catch
+//function to update data using try catch
+controller.updateData = async (req, res) => {
+    console.log('req.body', req.body);
+    try {
+        const data = await registrationForm.findByIdAndUpdate({_id:req.params.id}, req.body, {
+            new: true
+        })
+        res.redirect('/')
+    } catch (err) {
+        res.json({ message: err });
+    }
+}
+
+//functiont to post a data using try catch
 controller.postData = async (req, res) => {
     try {
         const data = await registrationForm.create({
@@ -21,17 +46,16 @@ controller.postData = async (req, res) => {
             phoneNumber: req.body.phoneNumber,
             lastJobPosition: req.body.lastJobPosition,
             lastJobCompany: req.body.lastJobCompany,
-            lastJobStartDate: req.body.lastJobStartDate,
-            lastJobEndDate: req.body.lastJobEndDate,
-            lastJobDescription: req.body.lastJobDescription
+            lastJobDescription: req.body.lastJobDescription,
+            yearsOfExperiences: req.body.yearsOfExperiences
         });
-        res.status(200).json(data);
+        res.redirect('/');
     } catch (err) {
         res.send(err);
     }
 }
 
-// make a function to delete a data using try catch
+//function to delete a data using try catch
 controller.deleteData = async (req, res) => {
     try {
         await registrationForm.findByIdAndDelete(req.params.id);
