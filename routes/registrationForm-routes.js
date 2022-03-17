@@ -7,6 +7,6 @@ router.post('/', controller.postData);
 router.get('/', controller.getData);
 router.get('/:id', controller.getDataById);
 router.post('/update/:id', controller.updateData);
-router.delete('/delete/:id', controller.deleteData);
+router.get('/delete/:id', controller.deleteData);
 
 module.exports = router;

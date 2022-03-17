@@ -59,8 +59,8 @@
                         <td><%= data.address %></a></td>
                         <td><%= data.phoneNumber %></a></td>
                         <td>
-                            <a data-method="delete" href="/delete/<%= data._id %>" class="btn btn-danger">Delete</a>
-                            <a data-method="get" href="/<%= data._id %>" class="btn btn-info">Detail / Edit</a>
+                            <a href="/delete/<%= data._id %>" class="btn btn-danger">Delete</a>
+                            <a href="/<%= data._id %>" class="btn btn-info">Detail / Edit</a>
                         </td>
                     </tr>
                     <% }) %>
