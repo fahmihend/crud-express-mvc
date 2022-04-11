@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const databaseConnection = async () => {
     try {
-        await mongoose.connect('mongodb+srv://fahmi1:Rahasia01@cluster0.ics41.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',{
+        await mongoose.connect('{{link to your mongodb collection}}',{
             useNewUrlParser:true 
         });
 
