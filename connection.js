@@ -1,9 +1,10 @@
 //database connection
 const mongoose = require('mongoose');
+require('dotenv').config()
 
 const databaseConnection = async () => {
     try {
-        await mongoose.connect('{{link to your mongodb collection}}',{
+        await mongoose.connect(process.env.MONGO_URL,{
             useNewUrlParser:true 
         });
 

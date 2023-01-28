@@ -7,7 +7,7 @@ controller.getDataById = async (req, res) => {
         const data = await registrationForm.findById({
             _id: req.params.id
         })
-        res.render('detail', {data: data})
+        res.json('detail', {data: data})
     } catch (err) {
         res.json({ message: err });
     }
@@ -17,7 +17,7 @@ controller.getDataById = async (req, res) => {
 controller.getData = async (req, res) => {
     try {
         const data = await registrationForm.find();
-        res.render('index', {data: data})
+        res.json({data: data})
     } catch (err) {
         res.json({ message: err });
     }
@@ -38,7 +38,7 @@ controller.updateData = async (req, res) => {
 //functiont to post a data using try catch
 controller.postData = async (req, res) => {
     try {
-        const data = await registrationForm.create({
+        await registrationForm.create({
             fullName: req.body.fullName,
             email: req.body.email,
             address: req.body.address,
@@ -48,7 +48,7 @@ controller.postData = async (req, res) => {
             lastJobDescription: req.body.lastJobDescription,
             yearsOfExperiences: req.body.yearsOfExperiences
         });
-        res.redirect('/');
+        res.json({message: 'success'});
     } catch (err) {
         res.send(err);
     }
